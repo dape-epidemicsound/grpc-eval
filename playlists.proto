@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package epidemic;
+
+import "sounds.proto";
+import "uuid.proto";
+
+message Playlist {
+    UUID id = 1;
+    string title = 2;
+    repeated Sound sounds = 3;
+}
+
+message CreatePlaylistRequest {
+    Playlist playlist = 1;
+}
+
+message CreatePlaylistResponse {
+}
+
+message ListPlaylistsRequest {}
+
+message ListPlaylistsResponse {
+    repeated Playlist playlists = 1;
+}
+
+service PlaylistsService {
+    rpc Create(CreatePlaylistRequest) returns (CreatePlaylistResponse);
+    rpc List(ListPlaylistsRequest) returns (ListPlaylistsResponse);
+}
