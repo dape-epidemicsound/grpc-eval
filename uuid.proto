@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package epidemic;
 
+option go_package = "github.com/epidemicsound/grpc-eval/epidemic";
+
 // Binpacked version of UUID4; use instead of string or bytes.
 message UUID {
     uint64 p1 = 1;

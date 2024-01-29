@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package epidemic;
 
+option go_package = "github.com/epidemicsound/grpc-eval/epidemic";
+
 import "sounds.proto";
 import "uuid.proto";
 

@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package epidemic;
 
+option go_package = "github.com/epidemicsound/grpc-eval/epidemic";
+
 import "duration.proto";
 import "uuid.proto";
 
@@ -12,14 +14,18 @@ enum Role {
 }
 
 message Credit {
-    // TODO(dape): I assume this is the name of the person to credit, should it be a UUID instead?
-    string name = 1;
-    repeated Role roles = 2;
+    // this identifies the user that
+    oneof artist {
+        string name = 1;
+        UUID id = 2;
+    }
+    repeated Role roles = 3;
 }
 
 // This is probably a way to simple model, potentially we can create a very
 // long enum with aliases (different name same value).
 enum Genre {
+    // rebuild
     GENRE_UNSPECIFIED = 0;
     ROCK = 1;
     HIPHOP = 2;
