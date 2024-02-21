@@ -21,6 +21,12 @@ gen/%_grpc.pb.go: %.proto
 		--proto_path=${PWD} \
 		--proto_path=/opt/homebrew/Cellar/protobuf/25.2/include/google/protobuf
 
+gen/%.twirp.go: %.proto
+	protoc $< \ 
+		--twirp_opt=paths=source_relative \
+		--twirp_out=gen \
+		--proto_path=${PWD} \
+		--proto_path=/opt/homebrew/Cellar/protobuf/25.2/include/google/protobuf 
 
 bin/cmd/sampled: gen/uuid.pb.go \
 		gen/sounds.pb.go \
