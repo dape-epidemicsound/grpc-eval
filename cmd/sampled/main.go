@@ -37,6 +37,9 @@ func main() {
 		}
 	})
 
+	ts := epidemic.NewPlaylistsServiceServer(playlists.NewService())
+	mux.Handle(ts.PathPrefix(), ts)
+
 	http.ListenAndServe(":8080", http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
 		if req.ProtoMajor == 2 && strings.HasPrefix(
 			req.Header.Get("Content-Type"), "application/grpc") {

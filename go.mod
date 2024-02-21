@@ -5,7 +5,7 @@ go 1.21.3
 require (
 	github.com/golang/protobuf v1.5.3 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
-	github.com/twitchtv/twirp v7.2.0+incompatible // indirect
+	github.com/twitchtv/twirp v8.1.3+incompatible // indirect
 	golang.org/x/net v0.18.0 // indirect
 	golang.org/x/sys v0.14.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
