@@ -21,8 +21,8 @@ gen/%_grpc.pb.go: %.proto
 		--proto_path=${PWD} \
 		--proto_path=/opt/homebrew/Cellar/protobuf/25.2/include/google/protobuf
 
-gen/%.twirp.go: %.proto
-	protoc $< \
+gen/sounds.twirp.go gen/playlists.twirp.go: sounds.proto playlists.proto
+	protoc $^ \
 		--twirp_out=gen \
 		--twirp_opt=paths=source_relative \
 		--proto_path=${PWD} \
@@ -33,8 +33,9 @@ bin/cmd/sampled: gen/uuid.pb.go \
 		gen/sounds_grpc.pb.go \
 		gen/playlists.pb.go \
 		gen/playlists_grpc.pb.go \
-		gen/playlists.twirp.go
-	go build -o bin/cmd/samppled ./cmd/sampled/...
+		gen/playlists.twirp.go \
+		gen/sounds.twirp.go
+	go build -o bin/cmd/sampled ./cmd/sampled/...
 
 
 clean:
